@@ -1,0 +1,6 @@
+web:
+  image: nginx
+  volumes:
+    - $HOME_DIRECTORY:/usr/share/nginx/html
+  command:
+    /bin/bash -c "echo 'server { listen 80; server_name  localhost; index 404.html 404.htm; root /usr/share/nginx/html; location / { try_files $uri $uri/ /404.html; } }' > /etc/nginx/conf.d/default.conf && exec nginx -g 'daemon off;'"
